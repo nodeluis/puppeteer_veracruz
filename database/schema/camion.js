@@ -8,7 +8,7 @@ const camion={
       lon:String,
       lugar:String,
       velocidad:String,
-      fecha:Date
+      fecha:String
     }]
 };
 

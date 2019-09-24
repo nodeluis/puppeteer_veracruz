@@ -46,82 +46,104 @@ module.exports=async(socket)=>{
               General.findByIdAndUpdate(idG,obj,()=>{
                 console.log('actualizado');
               });
+              if(doc.control){
+                actualizarCamion(da[0],da[1],qu);
+              }
             }else{
+              obj.control=false;
               let insert=new General(obj);
               let resul=await insert.save();
               console.log(resul);
             }
         });
-
-        //actualizar datos del camion
-        console.log('actualizando datos de '+ da[1]+' en fecha '+qu);
-        await page.goto('http://200.87.207.36//googleMapsGenerarRecorrido.php?IdMov='+da[0]+'&fechaDesde='+qu+'%2000:01&fechaHasta='+qu+'%2023:59');
-        //await page.goto('http://200.87.207.36//googleMapsGenerarRecorrido.php?IdMov='+da[0]+'&fechaDesde=2019-09-08%2000:01&fechaHasta=2019-09-09%2023:59');
-        const dataxcamion = await page.evaluate(() => {
-        return {
-            json: JSON.parse(document.documentElement.outerText)
-          };
-        });
-        if(!empty(dataxcamion.json)){
-          console.log('longitud de los valores rescatados');
-          console.log(dataxcamion.json.length);
-          let inf=[];
-          let placact='';
-          for(let k=0;k<dataxcamion.json.length;k++){
-            let dat2=dataxcamion.json[k];
-            if(dat2['Velocidad']>70){
-              placact=dat2['Descripcion'];
-              inf.push({
-                lat:dat2['Latitud'],
-                lon:dat2['Longitud'],
-                lugar:dat2['Referencia'],
-                velocidad:dat2['Velocidad'],
-                fecha:new Date(dat2['Fecha'])
-              });
-            }
-          }
-          console.log('buscando placa en la bd '+placact+' para actualizar');
-          Camion.findOne({placa:placact},(err,doc)=>{
-            if(!empty(doc)){
-              let t=0;
-              for(let j=0;j<inf.length;j++){
-                let verify=true;
-                let dat3=inf[j];
-                //let verify=doc.excesos.find(fe=>fe.fecha==datever);
-                doc.excesos.forEach(fe=>{
-                  if(fe.fecha==dat3['fecha']){
-                    verify=false;
-                  }
-                });
-                if(verify){
-                  doc.excesos.push(dat3);
-                  t++;
-                }
-              }
-              if(t>0){
-                Camion.findByIdAndUpdate(doc._id,doc,()=>{
-                  console.log('hubo un nuevo exceso');
-                });
-              }
-            }else{
-              let ins=new Camion({
-                id:da[0],
-                placa:placact,
-                excesos:inf
-              });
-              ins.save().then(()=>{
-                console.log('insertado nuevo camion');
-              }).catch(()=>{
-                console.log('error');
-              });
-            }
-          });
-        }
         cons.push(obj);
       }
       socket.emit('actualizar_vista_general',cons);
-    },480000);
+    },60000);
 
+    async function actualizarCamion(id,pl,qu){
+      //actualizar datos del camion
+      console.log('actualizando datos de '+ pl+' en fecha '+qu);
+      await page.goto('http://200.87.207.36//googleMapsGenerarRecorrido.php?IdMov='+id+'&fechaDesde='+qu+'%2000:01&fechaHasta='+qu+'%2023:59');
+      //await page.goto('http://200.87.207.36//googleMapsGenerarRecorrido.php?IdMov='+id+'&fechaDesde=2019-09-23%2000:01&fechaHasta=2019-09-23%2023:59');
+      const dataxcamion = await page.evaluate(() => {
+      return {
+          json: JSON.parse(document.documentElement.outerText)
+        };
+      });
+      if(!empty(dataxcamion.json)){
+        console.log('longitud de los valores rescatados');
+        console.log(dataxcamion.json.length);
+        Camion.find({id:id},(err,doc)=>{
+          let t=false;
+          let inf=[];
+          for (var k = 0; k < dataxcamion.json.length; k++) {
+            let dat2=dataxcamion.json[k];
+            if(dat2['Velocidad']>70){
+              if(empty(doc)){
+                inf.push({
+                  lat:dat2['Latitud'],
+                  lon:dat2['Longitud'],
+                  lugar:dat2['Referencia'],
+                  velocidad:dat2['Velocidad'],
+                  fecha:dat2['Fecha']
+                });
+              }else{
+                if(!empty(doc.excesos)){
+                  let verif=true;
+                  for (let z = 0; z < doc.excesos.length; z++) {
+                    let dat8=doc.excesos[z];
+                    if(dat8.fecha==(dat2['Fecha']+'')&&dat8.lat==(dat2['Latitud']+'')&&dat8.lon==(dat2['Longitud']+'')){
+                      verif=false;
+                      break;
+                    }
+                  }
+                  if(verif){
+                    t=true;
+                    doc.excesos.push({
+                      lat:dat2['Latitud'],
+                      lon:dat2['Longitud'],
+                      lugar:dat2['Referencia'],
+                      velocidad:dat2['Velocidad'],
+                      fecha:dat2['Fecha']
+                    });
+                  }
+                }else{
+                  t=true;
+                  let ot=[];
+                  ot.push({
+                    lat:dat2['Latitud'],
+                    lon:dat2['Longitud'],
+                    lugar:dat2['Referencia'],
+                    velocidad:dat2['Velocidad'],
+                    fecha:dat2['Fecha']
+                  });
+                  doc.excesos=ot;
+                }
+              }
+            }
+          }
+          if(empty(doc)){
+            let ins=new Camion({
+              id:id,
+              placa:pl,
+              excesos:inf
+            });
+            ins.save().then(()=>{
+              console.log('nuevo camion insertado');
+            }).catch(()=>{
+              console.log('error de la coleccion camion');
+            });
+          }else{
+            if(t){
+              Camion.findByIdAndUpdate(doc._id,doc,()=>{
+                console.log('hubo una nueva infraccion');
+              });
+            }
+          }
+        });
+      }
+    }
     socket.on('disconnect',async()=>{
       console.log('socket desconectado');
       await browser.close();

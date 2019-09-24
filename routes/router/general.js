@@ -15,4 +15,18 @@ router.get('/',(req,res)=>{
     });
 });
 
+router.patch('/control/:id',(req,res)=>{
+    let id=req.params.id;
+    General.findOne({_id:id},(err,doc)=>{
+      if(!empty(doc)){
+        doc.control=true;
+        General.findByIdAndUpdate(id,doc,()=>{
+          res.json({message:'camion ahora esta siendo monitoreado'});
+        });
+      }else{
+        res.json({message:'error no existe camion'});
+      }
+    });
+});
+
 module.exports=router;
