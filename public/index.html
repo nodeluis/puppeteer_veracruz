@@ -128,10 +128,11 @@
         console.log(response);
       });*/
       $.post(url, datos, function(response,status) {
-        var url = "home.html";
+        var url = "/home2?token="+response.token;
         $(location).attr('href',url);
-        console.log(response);
-      }, 'json').fail(function(err){
+        //console.log(response);
+        //$.get(url, null, function(respo) {});
+      },'json').fail(function(err){
         $('#btnp').attr('data-target','#modal-danger');
         $('#textoaviso').text(err.responseJSON['message']);
       });

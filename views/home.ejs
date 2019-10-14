@@ -296,47 +296,10 @@ desired effect
       <!--------------------------
         | Your Page Content Here |
         -------------------------->
+
         <div id="map"></div>
 
 
-
-        <div class="row" id="excesosDiv">
-        <div class="col-xs-12">
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Tabla de excesos de velocidad</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <table id="example2" class="table table-bordered table-hover">
-                <thead>
-                <tr>
-                  <th>Placa</th>
-                  <th>Lugar</th>
-                  <th>Velocidad</th>
-                  <th>Fecha</th>
-                  <th>Hora</th>
-                </tr>
-                </thead>
-                <tbody id="contenidoExc">
-                </tbody>
-                <tfoot>
-                <tr>
-                  <th>Placa</th>
-                  <th>Lugar</th>
-                  <th>Velocidad</th>
-                  <th>Fecha</th>
-                  <th>Hora</th>
-                </tr>
-                </tfoot>
-              </table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-        <!-- /.col -->
-      </div>
 
     </section>
     <!-- /.content -->
@@ -447,163 +410,64 @@ desired effect
 
 <!--<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN86jpZSdHSfpwhlKVv272WTd1lBMr6bc&callback=initMap"></script>-->
 
-
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-
-
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN86jpZSdHSfpwhlKVv272WTd1lBMr6bc"></script>
 <script type="text/javascript" src="javascripts/jquery.googlemap.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 
 <script>
 
-    var socket = io.connect('http://192.168.1.2:8000');
+    /*var socket = io.connect('http://192.168.1.4:8000');
     socket.on('actualizar_vista_general', function (resp) {
         console.log(resp);
-    });
+    });*/
 
     $(document).ready(function () {
       //$('#example1').DataTable();
-      $('#example2').DataTable({
-        "pagingType": "full_numbers"
-      });
-      /*$(function() {
-        $("#map").googleMap();
-        $("#map").addMarker({
-          coords: [-19.578297, -65.758633], // GPS coords
-          url: 'http://www.tiloweb.com', // Link to redirect onclick (optional)
-          id: 'marker1' // Unique ID for your marker
-        });
-      });*/
-      /*$(function() {
-        $("#map").googleMap({
-          zoom: 12, // Initial zoom level (optional)
-          coords: [-19.578297, -65.758633], // Map center (optional)
-          type: "ROADMAP" // Map type (optional)
-        });
-      })*/
-      /*$(function() {
-        //$("#map").googleMap();
-        $("#map").addMarker({
-          coords: [-19.578297, -65.758633], // GPS coords
-          url: 'http://www.tiloweb.com', // Link to redirect onclick (optional)
-          id: 'marker1' // Unique ID for your marker
-        });
-      });*/
+      var i2='algo';
+      console.log('<%=token%>');
       $('#excesosDiv').hide();
+      $('#modal_situation').hide();
+      $('<li id="'+i2+'tree">'
+                +'<a href="#"><i id="'+i2+'f1"></i><span>Datos generales</span>'
+                +'<span id="'+i2+'spa">'
+                +'<i id="'+i2+'f2"></i>'
+                +'</span>'
+                +'</a>'
+                +'<ul id="'+i2+'tremen">'
+                +'<li><a href="#" id="'+i2+'cam"><i class="fa fa-circle-o"></i>Camiones</a></li>'
+                +'</ul>'
+                +'</li>').appendTo('#incamion');
+      $('#'+i2+'tree').addClass('treeview');
+      $('#'+i2+'f1').addClass('fa fa-bus');
+      $('#'+i2+'spa').addClass('pull-right-container');
+      $('#'+i2+'f2').addClass('fa fa-angle-left pull-right');
+      $('#'+i2+'tremen').addClass('treeview-menu');
 
       $.get('/general',null,function(response){
-            $("#map").googleMap({
+          $("#map").googleMap({
             zoom: 8, // Initial zoom level (optional)
             coords: [-19.578297, -65.758633], // Map center (optional)
             type: "ROADMAP" // Map type (optional)
           });
-
           for(var i=0;i<response.length;i++){
             let dato=response[i];
-            //ids.push(dato['_id']);
-            $('<li id="'+i+'tree">'
-                      +'<a href="#"><i id="'+i+'f1"></i><span>'+dato['placa']+'</span>'
-                      +'<span id="'+i+'spa">'
-                      +'<i id="'+i+'f2"></i>'
-                      +'</span>'
-                      +'</a>'
-                      +'<ul id="'+i+'tremen">'
-                      +'<li><a href="#">datos chofer/propietario</a></li>'
-                      +'<li><a href="#">registro alcoholemia</a></li>'
-                      +'<li><a href="#">chequeo extintores</a></li>'
-                      +'<li><a href="#">registro FELCN</a></li>'
-                      +'<li><a href="#">riesgo de viaje</a></li>'
-                      +'<li><a href="#">botiquin</a></li>'
-                      +'<li><a href="#" id="'+i+'exc">excesos de velocidad</a></li>'
-                      +'</ul>'
-                      +'</li>').appendTo('#incamion');
-            $('#'+i+'tree').addClass('treeview');
-            $('#'+i+'f1').addClass('fa fa-bus');
-            $('#'+i+'spa').addClass('pull-right-container');
-            $('#'+i+'f2').addClass('fa fa-angle-left pull-right');
-            $('#'+i+'tremen').addClass('treeview-menu');
-            //insertando punto en el mapa
             $("#map").addMarker({
               coords: [parseFloat(dato['lat']),parseFloat(dato['lon'])], // GPS coords
-              //coords: [dato['lat'],dato['lon']],
-              //url: 'http://www.tiloweb.com', // Link to redirect onclick (optional)
-              //id: 'marker1', // Unique ID for your marker
+                //coords: [dato['lat'],dato['lon']],
+                //url: 'http://www.tiloweb.com', // Link to redirect onclick (optional)
+                //id: 'marker1', // Unique ID for your marker
               title:dato['lugar'],
               icon:'/fonts/icons/camion4.png',
               text:'<b>Lorem ipsum</b> dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
             });
-            //poner a la escucha y hacer operaciones
-            $('#'+i+'exc').on('click', function(e){
-              e.preventDefault();
-              $("#map").googleMap({
-                zoom: 8, // Initial zoom level (optional)
-                coords: [-19.578297, -65.758633], // Map center (optional)
-                type: "ROADMAP" // Map type (optional)
-              });
-              $('#excesosDiv').show();
-              //$.get('/camion/exceso2/'+dato['id'],null,function(resp){
-              $.get('/camion/exceso2/'+dato['id'],null,function(resp){
-                $('#contenidoExc').empty();
-                console.log(resp[0]);
-                //for(var j=0;j<resp.excesos.length;j++){
-                  //let dat=resp.excesos[j];
-                resp[0].excesos.forEach(function(dat){
-                  //let fe=dat['Fecha'].split(' ');
-                  $('<tr>'
-                    +'<td>'+dato['id']+'</td>'
-                    +'<td>'+dat['lugar']+'</td>'
-                    +'<td>'+dat['velocidad']+'</td>'
-                    +'<td>'+dat['fecha']+'</td>'
-                    +'<td>'+'hora'+'</td>'
-                    +'<tr>').appendTo('#contenidoExc');
-                  //añadiendo puntos de exceso
-                  $("#map").addMarker({
-                    //coords: [parseFloat(dat['lat']),parseFloat(dat['lon'])], // GPS coords
-                    coords: [parseFloat(dat['lat']),parseFloat(dat['lon'])],
-                      //url: 'http://www.tiloweb.com', // Link to redirect onclick (optional)
-                    title:dat['fecha'],
-                    icon:'/fonts/icons/alert.png',
-                    text:'<b>EVENTO</b> exceso de velocidad por el camion '+dato['id']+'a una altitud de '
-                  });
-                });//aqui hay cambios
-              });
-            });
           }
 
       });
-      /*var url='/camion';
-      var datos={};
-
-      $.get(url, datos, function(response){
-        //console.log(response);
-        var ids=[];
-        for(var i=0;i<response.length;i++){
-          let dato=response[i];
-          ids.push(dato['_id']);
-          $('<li id="'+i+'tree">'
-                    +'<a href="#"><i id="'+i+'f1"></i><span>'+dato['placa']+'</span>'
-                    +'<span id="'+i+'spa">'
-                    +'<i id="'+i+'f2"></i>'
-                    +'</span>'
-                    +'</a>'
-                    +'<ul id="'+i+'tremen">'
-                    +'<li><a href="#">datos chofer/propietario</a></li>'
-                    +'<li><a href="#">registro alcoholemia</a></li>'
-                    +'<li><a href="#">chequeo extintores</a></li>'
-                    +'<li><a href="#">registro FELCN</a></li>'
-                    +'<li><a href="#">riesgo de viaje</a></li>'
-                    +'<li><a href="#">botiquin</a></li>'
-                    +'</ul>'
-                    +'</li>').appendTo('#incamion');
-          $('#'+i+'tree').addClass('treeview');
-          $('#'+i+'f1').addClass('fa fa-bus');
-          $('#'+i+'spa').addClass('pull-right-container');
-          $('#'+i+'f2').addClass('fa fa-angle-left pull-right');
-          $('#'+i+'tremen').addClass('treeview-menu');
-        }
-
-      });*/
+      $('#'+i2+'cam').on('click', function(e){
+        e.preventDefault();
+        var url='veracruz2?token=<%=token%>';
+        $(location).attr('href',url);
+      });
     });
 
 </script>

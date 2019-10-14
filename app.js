@@ -14,10 +14,11 @@ var generalRouter = require('./routes/router/general');
 var app = express();
 
 // view engine setup
+/*app.use(express.static(__dirname + 'views'));
+app.set('view engine', 'jade');*/
+
 app.use(express.static(__dirname + 'views'));
-app.set('view engine', 'jade');
-
-
+app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
