@@ -164,17 +164,38 @@ router.post('/actualizar',async(req,res)=>{
     res.json({funciona:'funciona'});
 });
 
-router.get('/exceso2/:id',(req,res)=>{
-    let id=req.params.id;
-    Camion.find({id:id},(err,doc)=>{
+router.post('/exceso2',(req,res)=>{
+    let id=req.body.id;
+    let i=req.body.i;
+    Camion.findOne({id:id},(err,doc)=>{
       if(!empty(doc)){
-        //console.log(doc);
-        res.json(doc[0].exceso);
+        let arr=[];
+        for (let j =(doc.exceso.length-1)-(i*40),k=0; j>=0&&k<40 ; j--,k++) {
+          arr.push(doc.exceso[j]);
+        }
+        res.json(arr);
       }else{
         res.json([]);
       }
     });
 });
+
+router.post('/horario',(req,res)=>{
+    let id=req.body.id;
+    let i=req.body.i;
+    Camion.findOne({id:id},(err,doc)=>{
+      if(!empty(doc)){
+        let arr=[];
+        for (let j =(doc.horario.length-1)-(i*40),k=0; j>=0&&k<40 ; j--,k++) {
+          arr.push(doc.horario[j]);
+        }
+        res.json(arr);
+      }else{
+        res.json([]);
+      }
+    });
+});
+
 
 
 router.get('/exceso/:id',async(req,res)=>{
@@ -290,5 +311,79 @@ router.post('/fechaH',(req,res)=>{
       }
     });
 });
+
+router.get('/borrar',(req,res)=>{
+  Camion.findOne({id:'4634057670'},(err,doc)=>{
+    doc.extintor=[];
+    Camion.findByIdAndUpdate(doc._id,doc,()=>{
+      res.json({message:'borrado'});
+    });
+  });
+});
+
+router.post('/extintor',(req,res)=>{
+    let arr=req.body.data.split(',');
+    let id=req.body.id;
+    let t=((arr[3]=='Aplica')?true:false);
+    let ob={
+      botella:arr[4],
+      etiqueta:arr[5],
+      mangera:arr[6],
+      boquilla:arr[7],
+      peso:arr[8],
+      manometro:arr[9],
+      seguro:arr[10],
+      ubicacion:arr[11],
+      limpieza:arr[12],
+      area:arr[13],
+      trabajo:arr[14],
+      señalizado:arr[15]
+    };
+    Camion.findOne({id:id},(err,doc)=>{
+      if(!empty(doc)){
+        if(empty(doc.extintor)){
+          let p=[];
+          p.push({
+            lugar:arr[0],
+            fecha:arr[2],
+            observacion:arr[1],
+            aplica:t,
+            check:ob
+          });
+          doc.extintor=p;
+        }else{
+          doc.extintor.push({
+            lugar:arr[0],
+            fecha:arr[2],
+            observacion:arr[1],
+            aplica:t,
+            check:ob
+          });
+        }
+        Camion.findByIdAndUpdate(doc._id,doc,()=>{
+          res.json({message:'nuevo check list del extintor insertado'});
+        });
+      }else{
+        res.json({message:'el camion no existe'});
+      }
+    });
+});
+
+router.post('/dataextintor',(req,res)=>{
+    let id=req.body.id;
+    let i=req.body.i;
+    Camion.findOne({id:id},(err,doc)=>{
+      if(!empty(doc)){
+        let arr=[];
+        for (let j =(doc.extintor.length-1)-(i*40),k=0; j>=0&&k<40 ; j--,k++) {
+          arr.push(doc.extintor[j]);
+        }
+        res.json(arr);
+      }else{
+        res.json([]);
+      }
+    });
+});
+
 
 module.exports=router;

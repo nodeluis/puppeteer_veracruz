@@ -3,7 +3,7 @@ const express=require('express');
 const router=express.Router();
 const empty=require('is-empty');
 //const JsonFind = require('json-find');
-var jsonQuery = require('json-query');
+const jsonQuery = require('json-query');
 
 router.get('/',(req,res)=>{
     General.find({},(err,docs)=>{
@@ -15,6 +15,7 @@ router.get('/',(req,res)=>{
         });
       }
     });
+
 });
 
 router.get('/probar',(req,res)=>{

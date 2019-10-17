@@ -16,9 +16,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Ionicons -->
   <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
+  <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+  <link rel="stylesheet" href="plugins/iCheck/all.css">
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker.css">
   <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css">
 
   <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
         page. However, you can choose any other skin. Make sure you
@@ -36,10 +39,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
       #map {
         height: 400px;  /* The height is 400 pixels */
         width: 100%;  /* The width is the width of the web page */
-       }
-       #masDatos{
-         float: right;
-       }
+      }
+      #masDatos{
+       float: right;
+      }
+      #masDatosH{
+       float: right;
+      }
     </style>
 
   <!-- Google Font -->
@@ -298,7 +304,7 @@ desired effect
       <!--------------------------
         | Your Page Content Here |
         -------------------------->
-
+        <!-- date range exceso -->
         <div class="form-group" id="dateRange">
             <label>Date range:</label>
 
@@ -315,7 +321,25 @@ desired effect
             </div>
             <!-- /.input group -->
         </div>
+        <!-- date range exceso final -->
+        <!-- date range hora -->
+        <div class="form-group" id="dateRangeH">
+            <label>Date range:</label>
 
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </div>
+                <input type="text" class="form-control pull-right" id="reservationH">
+                <div class="input-group-addon">
+                  <a href="#" id="enviarDateRangeH">
+                    <i class="fa fa-send"></i>
+                  </a>
+                </div>
+            </div>
+            <!-- /.input group -->
+        </div>
+        <!-- date range hora final -->
         <div id="map"></div>
 
         <div class="row" id="excesosDiv">
@@ -323,7 +347,7 @@ desired effect
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Tabla de excesos de velocidad</h3>
-              <a class="btn btn-app" id="masDatos">
+              <a href="#" class="btn btn-app" id="masDatos">
                   <i class="fa fa-plus"></i> Cargar más datos
               </a>
             </div>
@@ -359,6 +383,343 @@ desired effect
         <!-- /.col -->
       </div>
 
+      <!-- horarios de conduccion -->
+      <div class="row" id="horarioDiv">
+      <div class="col-xs-12">
+        <div class="box">
+          <div class="box-header">
+            <h3 class="box-title">Tabla de horarios de conducción inhadecuados</h3>
+            <a href="#" class="btn btn-app" id="masDatosH">
+                <i class="fa fa-plus"></i> Cargar más datos
+            </a>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <table id="example" class="table table-bordered table-hover">
+              <thead>
+              <tr>
+                <th>Placa</th>
+                <th>Lugar</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+              </tr>
+              </thead>
+              <tbody id="contenidoHor">
+              </tbody>
+              <tfoot>
+              <tr>
+                <th>Placa</th>
+                <th>Lugar</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+              </tr>
+              </tfoot>
+            </table>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- horarios de conduccion final-->
+
+    <!-- formulario extintores del camion -->
+    <form role="form" id="formExtint">
+      <div class="box box-default">
+        <div class="box-header with-border">
+          <h3 class="box-title">Check list del extintor del camión</h3>
+
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+          </div>
+        </div>
+
+        <div class="box-body">
+          <div class="row">
+            <div class="col-md-6">
+
+              <div class="form-group">
+                <label>Fecha:</label>
+                <div class="input-group date">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input type="text" class="form-control pull-right" id="ext3">
+                </div>
+                <!-- /.input group -->
+              </div>
+
+              <div class="form-group">
+                <label>Lugar de inspección:</label>
+                <input type="text" class="form-control" id="ext1" placeholder="Lugar">
+              </div>
+
+              <!-- radio -->
+              <div class="form-group">
+                <h3>Estado de la botella:</h3>
+                <label>
+                  <input type="radio" name="r1" class="flat-red" value="Excelente" checked>
+                  Excelente
+                </label>
+                <label>
+                  <input type="radio" name="r1" class="flat-red" value="Regular">
+                  Regular
+                </label>
+                <label>
+                  <input type="radio" name="r1" class="flat-red" value="Malo">
+                  Malo
+                </label>
+              </div>
+
+              <div class="form-group">
+                <h3>Estado de las etiquetas:</h3>
+                <label>
+                  <input type="radio" name="r2" class="flat-red" value="Excelente" checked>
+                  Excelente
+                </label>
+                <label>
+                  <input type="radio" name="r2" class="flat-red" value="Regular">
+                  Regular
+                </label>
+                <label>
+                  <input type="radio" name="r2" class="flat-red" value="Malo">
+                  Malo
+                </label>
+              </div>
+
+              <div class="form-group">
+                <h3>Estado de la manguera:</h3>
+                <label>
+                  <input type="radio" name="r3" class="flat-red" value="Excelente" checked>
+                  Excelente
+                </label>
+                <label>
+                  <input type="radio" name="r3" class="flat-red" value="Regular">
+                  Regular
+                </label>
+                <label>
+                  <input type="radio" name="r3" class="flat-red" value="Malo">
+                  Malo
+                </label>
+              </div>
+
+              <div class="form-group">
+                <h3>Estado de la boquilla:</h3>
+                <label>
+                  <input type="radio" name="r4" class="flat-red" value="Excelente" checked>
+                  Excelente
+                </label>
+                <label>
+                  <input type="radio" name="r4" class="flat-red" value="Regular">
+                  Regular
+                </label>
+                <label>
+                  <input type="radio" name="r4" class="flat-red" value="Malo">
+                  Malo
+                </label>
+              </div>
+
+              <div class="form-group">
+                <h3>Estado de peso del extintor:</h3>
+                <label>
+                  <input type="radio" name="r5" class="flat-red" value="Excelente" checked>
+                  Excelente
+                </label>
+                <label>
+                  <input type="radio" name="r5" class="flat-red" value="Regular">
+                  Regular
+                </label>
+                <label>
+                  <input type="radio" name="r5" class="flat-red" value="Malo">
+                  Malo
+                </label>
+              </div>
+
+              <div class="form-group">
+                <h3>Estado del manometro:</h3>
+                <label>
+                  <input type="radio" name="r6" class="flat-red" value="Excelente" checked>
+                  Excelente
+                </label>
+                <label>
+                  <input type="radio" name="r6" class="flat-red" value="Regular">
+                  Regular
+                </label>
+                <label>
+                  <input type="radio" name="r6" class="flat-red" value="Malo">
+                  Malo
+                </label>
+              </div>
+
+              <!-- /.form-group -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-6">
+
+              <div class="form-group">
+                <h3>Estado del seguro:</h3>
+                <label>
+                  <input type="radio" name="r7" class="flat-red" value="Excelente" checked>
+                  Excelente
+                </label>
+                <label>
+                  <input type="radio" name="r7" class="flat-red" value="Regular">
+                  Regular
+                </label>
+                <label>
+                  <input type="radio" name="r7" class="flat-red" value="Malo">
+                  Malo
+                </label>
+              </div>
+
+              <div class="form-group">
+                <h3>Ubicación del extintor:</h3>
+                <label>
+                  <input type="radio" name="r8" class="flat-red" value="Excelente" checked>
+                  Excelente
+                </label>
+                <label>
+                  <input type="radio" name="r8" class="flat-red" value="Regular">
+                  Regular
+                </label>
+                <label>
+                  <input type="radio" name="r8" class="flat-red" value="Malo">
+                  Malo
+                </label>
+              </div>
+
+              <div class="form-group">
+                <h3>Limpieza del extintor:</h3>
+                <label>
+                  <input type="radio" name="r9" class="flat-red" value="Excelente" checked>
+                  Excelente
+                </label>
+                <label>
+                  <input type="radio" name="r9" class="flat-red" value="Regular">
+                  Regular
+                </label>
+                <label>
+                  <input type="radio" name="r9" class="flat-red" value="Malo">
+                  Malo
+                </label>
+              </div>
+
+              <div class="form-group">
+                <h3>Área donde se situa el extintor:</h3>
+                <label>
+                  <input type="radio" name="r10" class="flat-red" value="Excelente" checked>
+                  Excelente
+                </label>
+                <label>
+                  <input type="radio" name="r10" class="flat-red" value="Regular">
+                  Regular
+                </label>
+                <label>
+                  <input type="radio" name="r10" class="flat-red" value="Malo">
+                  Malo
+                </label>
+              </div>
+
+              <div class="form-group">
+                <h3>Trabajo en llama abiertar:</h3>
+                <label>
+                  <input type="radio" name="r11" class="flat-red" value="Excelente" checked>
+                  Excelente
+                </label>
+                <label>
+                  <input type="radio" name="r11" class="flat-red" value="Regular">
+                  Regular
+                </label>
+                <label>
+                  <input type="radio" name="r11" class="flat-red" value="Malo">
+                  Malo
+                </label>
+              </div>
+
+              <div class="form-group">
+                <h3>Señalizado:</h3>
+                <label>
+                  <input type="radio" name="r12" class="flat-red" value="Excelente" checked>
+                  Excelente
+                </label>
+                <label>
+                  <input type="radio" name="r12" class="flat-red" value="Regular">
+                  Regular
+                </label>
+                <label>
+                  <input type="radio" name="r12" class="flat-red" value="Malo">
+                  Malo
+                </label>
+              </div>
+
+              <div class="form-group">
+                <label>Cumplimiento del extintor:</label>
+                <select class="form-control select2" style="width: 100%;" id="ext4">
+                  <option selected="selected">Aplica</option>
+                  <option>No aplica</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Observaciones:</label>
+                <textarea class="form-control" rows="3" placeholder="Observaciones ..." id="ext2"></textarea>
+              </div>
+
+              <!-- /.form-group -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </form>
+    <!-- formulario extintores del camion  fin-->
+
+    <!-- tabla check list extintores del camion -->
+    <div class="row" id="tablaExt">
+      <div class="col-xs-12">
+        <div class="box">
+          <div class="box-header">
+            <h3 class="box-title">Check lis de los extintores</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <table id="example3" class="table table-bordered table-hover">
+              <thead>
+              <tr>
+                <th>Lugar</th>
+                <th>Observaciones</th>
+                <th>Fecha</th>
+                <th>Checks</th>
+                <th>Aplica</th>
+              </tr>
+              </thead>
+              <tbody id="bodyExt">
+              </tbody>
+              <tfoot>
+              <tr>
+                <th>Lugar</th>
+                <th>Observaciones</th>
+                <th>Fecha</th>
+                <th>Checks</th>
+                <th>Aplica</th>
+              </tr>
+              </tfoot>
+            </table>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- tabla check list extintores del camion fin -->
     </section>
     <!-- /.content -->
   </div>
@@ -473,6 +834,9 @@ desired effect
 <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script src="bower_components/moment/min/moment.min.js"></script>
 <script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script src="bower_components/select2/dist/js/select2.full.min.js"></script>
+<script src="plugins/iCheck/icheck.min.js"></script>
+<script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN86jpZSdHSfpwhlKVv272WTd1lBMr6bc"></script>
 <script type="text/javascript" src="javascripts/jquery.googlemap.js"></script>
@@ -481,17 +845,11 @@ desired effect
 
     var exinplusign=0;
     var id='';
+    var placa='';
+    var daterangenvio="";
     $(document).ready(function () {
       console.log('<%=token%>');
-      $('#reservation').daterangepicker()
-      $('#example2').DataTable({
-        'paging'      : true,
-        'lengthChange': false,
-        'searching'   : false,
-        'ordering'    : true,
-        'info'        : true,
-        'autoWidth'   : false
-      });
+      inicializar();
       limpiar();
       $.get('/general',null,function(response){
           $("#map").googleMap({
@@ -510,12 +868,12 @@ desired effect
                       +'</span>'
                       +'</a>'
                       +'<ul id="'+i+'tremen">'
-                      +'<li><a href="#"><i class="fa fa-circle-o"></i>Horarios de conducción</a></li>'
+                      +'<li><a href="#" id="'+i+'hor"><i class="fa fa-circle-o"></i>Horarios de conducción</a></li>'
                       +'<li><a href="#"><i class="fa fa-circle-o"></i>Kilometros recorridos</a></li>'
                       +'<li><a href="#"><i class="fa fa-circle-o"></i>Desvios</a></li>'
                       +'<li><a href="#"><i class="fa fa-circle-o"></i>Alcoholemia</a></li>'
                       +'<li><a href="#"><i class="fa fa-circle-o"></i>Botiquín</a></li>'
-                      +'<li><a href="#"><i class="fa fa-circle-o"></i>Extintores</a></li>'
+                      +'<li><a href="#" id="'+i+'ext"><i class="fa fa-circle-o"></i>Extintores</a></li>'
                       +'<li><a href="#" id="'+i+'exc"><i class="fa fa-circle-o"></i>excesos de velocidad</a></li>'
                       +'<li><a href="#" id="'+i+'cont"><i class="fa fa-circle-o"></i>Controlar estado del camion</a></li>'
                       +'</ul>'
@@ -542,14 +900,18 @@ desired effect
             $('#'+i+'exc').on('click', function(e){
               e.preventDefault();
               id=dato['id'];
+              placa=dato['placa']
               $("#map").googleMap({
                 zoom: 8, // Initial zoom level (optional)
                 coords: [-19.578297, -65.758633], // Map center (optional)
                 type: "ROADMAP" // Map type (optional)
               });
               limpiar();
-              //$.get('/camion/exceso2/'+dato['id'],null,function(resp){
-              $.get('/camion/exceso2/'+dato['id'],null,function(resp){
+              let postdata={
+                id:dato['id'],
+                i:exinplusign
+              };
+              $.post('/camion/exceso2',postdata,function(resp,status){
                 $('#excesosDiv').show();
                 $('#dateRange').show();
                 console.log(resp);
@@ -571,8 +933,82 @@ desired effect
                     text:'<b>EVENTO</b> exceso de velocidad por el camion '+dato['id']+'a una altitud de '
                   });
                 });//aqui hay cambios
+              },'json').fail(function(err){
+                console.log(err);
               });
             });
+            // horarios de conduccion
+            $('#'+i+'hor').on('click', function(e){
+              e.preventDefault();
+              id=dato['id'];
+              placa=dato['placa']
+              $("#map").googleMap({
+                zoom: 8, // Initial zoom level (optional)
+                coords: [-19.578297, -65.758633], // Map center (optional)
+                type: "ROADMAP" // Map type (optional)
+              });
+              limpiar();
+              let postdata={
+                id:dato['id'],
+                i:exinplusign
+              };
+              $.post('/camion/horario',postdata,function(resp,status){
+                $('#horarioDiv').show();
+                $('#dateRangeH').show();
+                console.log(resp);
+                resp.forEach(function(dat){
+                  $('<tr>'
+                    +'<td>'+dato['placa']+'</td>'
+                    +'<td>'+dat['lugar']+'</td>'
+                    +'<td>'+dat['fecha']+'</td>'
+                    +'<td>'+dat['hora']+'</td>'
+                    +'</tr>').appendTo('#contenidoHor');
+                  //añadiendo puntos de exceso
+                  $("#map").addMarker({
+                    //coords: [parseFloat(dat['lat']),parseFloat(dat['lon'])], // GPS coords
+                    coords: [parseFloat(dat['lat']),parseFloat(dat['lon'])],
+                      //url: 'http://www.tiloweb.com', // Link to redirect onclick (optional)
+                    title:dat['fecha'],
+                    icon:'/fonts/icons/alert.png',
+                    text:'<b>EVENTO</b> exceso de velocidad por el camion '+dato['id']+'a una altitud de '
+                  });
+                });//aqui hay cambios
+              },'json').fail(function(err){
+                console.log(err);
+              });
+            });
+            // horarios de conduccion final
+            // extintores
+
+            $('#'+i+'ext').on('click', function(e){
+              e.preventDefault();
+              id=dato['id'];
+              placa=dato['placa'];
+              limpiar();
+              $('#map').hide();
+              $('#formExtint').show();
+              let postdata={
+                id:dato['id'],
+                i:exinplusign
+              };
+              $.post('/camion/dataextintor',postdata,function(resp,status){
+                $('#tablaExt').show();
+                console.log(resp);
+                resp.forEach(function(dat){
+                  $('<tr>'
+                    +'<td>'+dat['lugar']+'</td>'
+                    +'<td>'+dat['observacion']+'</td>'
+                    +'<td>'+dat['fecha']+'</td>'
+                    +'<td>'+dat['check']+'</td>'
+                    +'<td>'+dat['aplica']+'</td>'
+                    +'</tr>').appendTo('#bodyExt');
+                });//aqui hay cambios
+              },'json').fail(function(err){
+                console.log(err);
+              });
+            });
+            // extintores final
+
           }
 
       });
@@ -580,7 +1016,8 @@ desired effect
       //botones de excesos de Velocidad
       $('#enviarDateRange').on('click',function(e){
         e.preventDefault();
-        $('#masDatos').prop("disabled",true);
+        limpiar();
+        $('#masDatos').addClass('disabled');
         var x=$('#reservation').val();
         var x2=x.split(' - ');
         let postdata={
@@ -589,13 +1026,48 @@ desired effect
           ff:x2[1]
         };
         $.post('/camion/fechaE', postdata, function(response,status) {
-          limpiar();
           $('#excesosDiv').show();
           $('#dateRange').show();
-          console.log(response);
-          response.forEach(function(dat){
+          try{
+            response.forEach(function(dat){
+              $('<tr>'
+                +'<td>'+placa+'</td>'
+                +'<td>'+dat['lugar']+'</td>'
+                +'<td>'+dat['velocidad']+'</td>'
+                +'<td>'+dat['fecha']+'</td>'
+                +'<td>'+dat['hora']+'</td>'
+                +'</tr>').appendTo('#contenidoExc');
+              //añadiendo puntos de exceso
+              $("#map").addMarker({
+                //coords: [parseFloat(dat['lat']),parseFloat(dat['lon'])], // GPS coords
+                coords: [parseFloat(dat['lat']),parseFloat(dat['lon'])],
+                  //url: 'http://www.tiloweb.com', // Link to redirect onclick (optional)
+                title:dat['fecha'],
+                icon:'/fonts/icons/alert.png',
+                text:'<b>EVENTO</b> exceso de velocidad por el camion '+placa+'a una altitud de '
+              });
+            });//aqui hay cambios
+          }catch(error){
+            console.log(response);
+          }
+
+        },'json').fail(function(err){
+          console.log(err);
+        });
+      });
+
+      $('#masDatos').on('click',function(e){
+        e.preventDefault();
+        exinplusign++;
+        let postdata={
+          id:id,
+          i:exinplusign
+        };
+        $.post('/camion/exceso2',postdata,function(resp,status){
+          console.log(resp);
+          resp.forEach(function(dat){
             $('<tr>'
-              +'<td>'+dat['_id']+'</td>'
+              +'<td>'+placa+'</td>'
               +'<td>'+dat['lugar']+'</td>'
               +'<td>'+dat['velocidad']+'</td>'
               +'<td>'+dat['fecha']+'</td>'
@@ -608,21 +1080,174 @@ desired effect
                 //url: 'http://www.tiloweb.com', // Link to redirect onclick (optional)
               title:dat['fecha'],
               icon:'/fonts/icons/alert.png',
-              text:'<b>EVENTO</b> exceso de velocidad por el camion '+dat['_id']+'a una altitud de '
+              text:'<b>EVENTO</b> exceso de velocidad por el camion '+placa+'a una altitud de '
             });
           });//aqui hay cambios
+        },'json').fail(function(err){
+          console.log(err);
+        });
+      });
+      //botones exceso de velocidad fin
+
+      //botones horarios
+
+      $('#enviarDateRangeH').on('click',function(e){
+        e.preventDefault();
+        limpiar();
+        $('#masDatosH').addClass('disabled');
+        var x=$('#reservationH').val();
+        var x2=x.split(' - ');
+        let postdata={
+          id:id,
+          fi:x2[0],
+          ff:x2[1]
+        };
+        $.post('/camion/fechaH', postdata, function(response,status) {
+          $('#horarioDiv').show();
+          $('#dateRangeH').show();
+          try{
+            response.forEach(function(dat){
+              $('<tr>'
+                +'<td>'+placa+'</td>'
+                +'<td>'+dat['lugar']+'</td>'
+                +'<td>'+dat['fecha']+'</td>'
+                +'<td>'+dat['hora']+'</td>'
+                +'</tr>').appendTo('#contenidoHor');
+              //añadiendo puntos de exceso
+              $("#map").addMarker({
+                //coords: [parseFloat(dat['lat']),parseFloat(dat['lon'])], // GPS coords
+                coords: [parseFloat(dat['lat']),parseFloat(dat['lon'])],
+                  //url: 'http://www.tiloweb.com', // Link to redirect onclick (optional)
+                title:dat['fecha'],
+                icon:'/fonts/icons/alert.png',
+                text:'<b>EVENTO</b> exceso de velocidad por el camion '+placa+'a una altitud de '
+              });
+            });//aqui hay cambios
+          }catch(error){
+            console.log(response);
+          }
 
         },'json').fail(function(err){
           console.log(err);
         });
       });
 
+      $('#masDatosH').on('click',function(e){
+        e.preventDefault();
+        exinplusign++;
+        let postdata={
+          id:id,
+          i:exinplusign
+        };
+        $.post('/camion/horario',postdata,function(resp,status){
+          console.log(resp);
+          resp.forEach(function(dat){
+            $('<tr>'
+              +'<td>'+placa+'</td>'
+              +'<td>'+dat['lugar']+'</td>'
+              +'<td>'+dat['fecha']+'</td>'
+              +'<td>'+dat['hora']+'</td>'
+              +'</tr>').appendTo('#contenidoHor');
+            //añadiendo puntos de exceso
+            $("#map").addMarker({
+              //coords: [parseFloat(dat['lat']),parseFloat(dat['lon'])], // GPS coords
+              coords: [parseFloat(dat['lat']),parseFloat(dat['lon'])],
+                //url: 'http://www.tiloweb.com', // Link to redirect onclick (optional)
+              title:dat['fecha'],
+              icon:'/fonts/icons/alert.png',
+              text:'<b>EVENTO</b> exceso de velocidad por el camion '+placa+'a una altitud de '
+            });
+          });//aqui hay cambios
+        },'json').fail(function(err){
+          console.log(err);
+        });
+      });
+      //botones horarios final
+
+      ////botones extintores
+      $('#formExtint').submit(function(e) {
+        e.preventDefault();
+        var erm=[];
+        for (var ii = 1; ii <=4; ii++) {
+          erm.push($('#ext'+ii).val());
+        }
+        for (var ii = 1; ii <= 12; ii++) {
+          erm.push($('input:radio[name=r'+ii+']:checked','#formExtint').val());
+        }
+        $.post('/camion/extintor',{data:erm+'',id:id},function(resp,status){
+          console.log(resp);
+
+        },'json').fail(function(err){
+          console.log(err);
+        });
+        $(this).trigger("reset");
+      });
+
+      ////botones extintores final
     });
 
     function limpiar(){
+      exinplusign=0;
+      $("#map").show();
+      $('#tablaExt').hide();
+      $('#formExtint').hide();
       $('#dateRange').hide();
+      $('#dateRangeH').hide();
       $('#excesosDiv').hide();
+      $('#horarioDiv').hide();
+      $('#masDatos').removeClass('disabled');
+      $('#masDatosH').removeClass('disabled');
       $('#contenidoExc').empty();
+      $('#contenidoHor').empty();
+      $('#bodyExt').empty();
+    }
+    function inicializar(){
+      //Date picker
+      $('#ext3').datepicker({
+        autoclose: true
+      });
+      //iCheck for checkbox and radio inputs
+      $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+        checkboxClass: 'icheckbox_minimal-blue',
+        radioClass   : 'iradio_minimal-blue'
+      });
+      //Red color scheme for iCheck
+      $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+        checkboxClass: 'icheckbox_minimal-red',
+        radioClass   : 'iradio_minimal-red'
+      });
+      //Flat red color scheme for iCheck
+      $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+        checkboxClass: 'icheckbox_flat-green',
+        radioClass   : 'iradio_flat-green'
+      });
+      $('.select2').select2();
+      $('#reservation').daterangepicker();
+      $('#reservationH').daterangepicker();
+      $('#example3').DataTable({
+        'paging'      : true,
+        'lengthChange': false,
+        'searching'   : false,
+        'ordering'    : true,
+        'info'        : true,
+        'autoWidth'   : false,
+      });
+      $('#example2').DataTable({
+        'paging'      : true,
+        'lengthChange': false,
+        'searching'   : false,
+        'ordering'    : true,
+        'info'        : true,
+        'autoWidth'   : false
+      });
+      $('#example').DataTable({
+        'paging'      : true,
+        'lengthChange': false,
+        'searching'   : false,
+        'ordering'    : true,
+        'info'        : true,
+        'autoWidth'   : false
+      });
     }
 </script>
 </body>
