@@ -40,7 +40,7 @@ const camion={
     }],
     indicador:{
       intermedio:{
-        desvioCamion:{
+        desvioConductor:{
           total:Number,
           tipo:[{
             fecha:String,
@@ -50,27 +50,27 @@ const camion={
             noReport:Number,
             incumplimientoHorario:Number,
             cinturon:Number,
-            convoy:Number,
             salud:Number,
             sinDescansar:Number,
             documentacion:Number,
-            gpsInactivo:Number,
             alterado:Number,
             conPasajero:Number,
             sinConocimientoRuta:Number,
             Nuevo:Number,
             reporteFalso:Number,
+            descripcion:String
+          }]
+        },
+        desvioCamion:{
+          total:Number,
+          tipo:[{
+            fecha:String,
+            convoy:Number,
+            gpsInactivo:Number,
             estacionamientoInseguro:Number,
             desvioRuta:Number,
             roboHurto:Number,
             luces:Number,
-            descripcion:String
-          }]
-        },
-        desvioConductor:{
-          total:Number,
-          tipo:[{
-            fecha:String,
             descripcion:String
           }]
         },
@@ -104,7 +104,53 @@ const camion={
           }]
         },
       },
-      final:{}
+      final:{
+        incidente:{
+          total:Number,
+          tipo:[{
+            fecha:String,
+            electrica:Number,
+            motor:Number,
+            caja:Number,
+            globo:Number,
+            compresorAire:Number,
+            eje:Number,
+            magueraAire:Number,
+            radiador:Number,
+            muelle:Number,
+            alternador:Number,
+            cruceta:Number,
+            freno:Number,
+            bomba:Number,
+            corona:Number,
+            turbo:Number,
+            rodamiento:Number,
+            correa:Number,
+            tanqueCombustible:Number,
+            inyector:Number,
+            chasis:Number,
+            direccion:Number,
+            descripcion:String
+          }]
+        },
+        accidente:{
+          total:Number,
+          tipo:[{
+            fecha:String,
+            con:Number,
+            sin:Number,
+            descripcion:String
+          }]
+        },
+        accidenteM:{
+          total:Number,
+          tipo:[{
+            fecha:String,
+            baja:Number,
+            descripcion:String
+          }]
+        },
+      }
     },
 };
 
