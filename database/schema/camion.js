@@ -39,6 +39,16 @@ const camion={
       }
     }],
     indicador:{
+      expocision:{
+        kmRecorrido:{
+          total:String,
+          viaje:[{
+            fecha:String,
+            ruta:String,
+            totalRecorrido:String
+          }]
+        },
+      },
       intermedio:{
         desvioConductor:{
           total:Number,
@@ -142,14 +152,18 @@ const camion={
             descripcion:String
           }]
         },
-        accidenteM:{
-          total:Number,
-          tipo:[{
-            fecha:String,
-            baja:Number,
-            descripcion:String
-          }]
-        },
+        accidenteM:[{
+          fecha:String,
+          descripcion:String
+        }],
+        kilometroAccidente:[{
+          fecha:String,
+          descripcion:String
+        }],
+        rutaAccidente:[{
+          fecha:String,
+          descripcion:String
+        }],
       }
     },
 };

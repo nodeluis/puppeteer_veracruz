@@ -46,6 +46,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
       #masDatosH{
        float: right;
       }
+      #chartdiv {
+        width: 100%;
+        height: 300px;
+      }
+
     </style>
 
   <!-- Google Font -->
@@ -305,25 +310,25 @@ desired effect
         | Your Page Content Here |
         -------------------------->
         <!-- date range exceso -->
-        <div class="form-group" id="dateRange">
-            <label>Date range:</label>
+    <div class="form-group" id="dateRange">
+      <label>Date range:</label>
 
-            <div class="input-group">
-                <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                </div>
-                <input type="text" class="form-control pull-right" id="reservation">
-                <div class="input-group-addon">
-                  <a href="#" id="enviarDateRange">
-                    <i class="fa fa-send"></i>
-                  </a>
-                </div>
-            </div>
-            <!-- /.input group -->
-        </div>
-        <!-- date range exceso final -->
-        <!-- date range hora -->
-        <div class="form-group" id="dateRangeH">
+      <div class="input-group">
+          <div class="input-group-addon">
+              <i class="fa fa-calendar"></i>
+          </div>
+          <input type="text" class="form-control pull-right" id="reservation">
+          <div class="input-group-addon">
+            <a href="#" id="enviarDateRange">
+              <i class="fa fa-send"></i>
+            </a>
+          </div>
+      </div>
+      <!-- /.input group -->
+    </div>
+    <!-- date range exceso final -->
+    <!-- date range hora -->
+    <div class="form-group" id="dateRangeH">
             <label>Date range:</label>
 
             <div class="input-group">
@@ -339,10 +344,11 @@ desired effect
             </div>
             <!-- /.input group -->
         </div>
-        <!-- date range hora final -->
-        <div id="map"></div>
+    <!-- date range hora final -->
+    <div id="map"></div>
 
-        <div class="row" id="excesosDiv">
+    <!-- excesos -->
+    <div class="row" id="excesosDiv">
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
@@ -381,11 +387,12 @@ desired effect
           <!-- /.box -->
         </div>
         <!-- /.col -->
-      </div>
+    </div>
+    <!-- excesos -->
 
-      <!-- horarios de conduccion -->
-      <div class="row" id="horarioDiv">
-      <div class="col-xs-12">
+    <!-- horarios de conduccion -->
+    <div class="row" id="horarioDiv">
+        <div class="col-xs-12">
         <div class="box">
           <div class="box-header">
             <h3 class="box-title">Tabla de horarios de conducción inhadecuados</h3>
@@ -720,6 +727,601 @@ desired effect
       <!-- /.col -->
     </div>
     <!-- tabla check list extintores del camion fin -->
+
+    <!-- formularios estadisticos -->
+    <div class="row">
+      <!-- left column -->
+      <div class="col-md-6">
+        <!-- general form elements -->
+        <!-- /.box -->
+        <form role="form">
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Formulario de desvios factor conductor</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+              </div>
+            </div>
+            <!-- /.box-header -->
+
+              <div class="box-body">
+
+                <div class="form-group">
+                  <label>Fecha:</label>
+                  <div class="input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="text" class="form-control pull-right" id="ext3">
+                  </div>
+                  <!-- /.input group -->
+                </div>
+
+                <!-- checkbox -->
+                <div class="form-group">
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      No paro en el punto de control
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Uso del equipo de proteccion personal
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      No fue inspeccionado
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      No se reporto
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Incumplimiento de horario de plan de viaje
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Uso de cinturon de seguridad
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Estado de salud
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Conductor sin descansar
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Problemas con la documentación
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Conductor alterado
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Conductor con pasajero
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Conductor que no conoce la ruta
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Conductor nuevo
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Emisión de reporte falso
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Descripción:</label>
+                  <textarea class="form-control" rows="3" placeholder="Pequeña descripción de las infracciones ..." id="ext2"></textarea>
+                </div>
+
+              </div>
+              <!-- /.box-body -->
+
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+
+          </div>
+        </form>
+
+        <form role="form">
+          <div class="box box-primary collapsed-box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Formulario de desvios factor vehículo</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+              </div>
+            </div>
+            <!-- /.box-header -->
+
+              <div class="box-body">
+
+                <div class="form-group">
+                  <label>Fecha:</label>
+                  <div class="input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="text" class="form-control pull-right" id="ext3">
+                  </div>
+                  <!-- /.input group -->
+                </div>
+
+                <!-- checkbox -->
+                <div class="form-group">
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Lider de convoy adelantado
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      GPS inactivo S/GPS
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Estacionamiento inseguro
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Desvio de ruta sin autorización
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Robos y hurtos
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Uso de luces de señalización
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Descripción:</label>
+                  <textarea class="form-control" rows="3" placeholder="Pequeña descripción de las infracciones ..." id="ext2"></textarea>
+                </div>
+
+              </div>
+              <!-- /.box-body -->
+
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+
+          </div>
+        </form>
+
+        <form role="form">
+          <div class="box box-primary collapsed-box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Formulario de problema en las vías</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+              </div>
+            </div>
+            <!-- /.box-header -->
+
+              <div class="box-body">
+
+                <div class="form-group">
+                  <label>Fecha:</label>
+                  <div class="input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="text" class="form-control pull-right" id="ext3">
+                  </div>
+                  <!-- /.input group -->
+                </div>
+
+                <!-- checkbox -->
+                <div class="form-group">
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Plataforma con baches
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Alto congestionamiento por tráfico
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Tramo inestable resbaladizo
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Descripción:</label>
+                  <textarea class="form-control" rows="3" placeholder="Pequeña descripción de las infracciones ..." id="ext2"></textarea>
+                </div>
+
+              </div>
+              <!-- /.box-body -->
+
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+
+          </div>
+        </form>
+
+        <form role="form">
+          <div class="box box-primary collapsed-box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Formulario de viajes afectados por problema en las vías</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+              </div>
+            </div>
+            <!-- /.box-header -->
+
+              <div class="box-body">
+
+                <div class="form-group">
+                  <label>Fecha:</label>
+                  <div class="input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="text" class="form-control pull-right" id="ext3">
+                  </div>
+                  <!-- /.input group -->
+                </div>
+
+                <!-- checkbox -->
+                <div class="form-group">
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Zona geológica inhestable
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Cierre de ruta
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Bloqueos / manifestaciones
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Descripción:</label>
+                  <textarea class="form-control" rows="3" placeholder="Pequeña descripción de las infracciones ..." id="ext2"></textarea>
+                </div>
+
+              </div>
+              <!-- /.box-body -->
+
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+
+          </div>
+        </form>
+
+        <form role="form">
+          <div class="box box-primary collapsed-box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Formulario de desvios por factores externos</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+              </div>
+            </div>
+            <!-- /.box-header -->
+
+              <div class="box-body">
+
+                <div class="form-group">
+                  <label>Fecha:</label>
+                  <div class="input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="text" class="form-control pull-right" id="ext3">
+                  </div>
+                  <!-- /.input group -->
+                </div>
+
+                <!-- checkbox -->
+                <div class="form-group">
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Condición climatológica pésima
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Otro tipo de desvio
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Descripción:</label>
+                  <textarea class="form-control" rows="3" placeholder="Descripción de los desvios ..." id="ext2"></textarea>
+                </div>
+
+              </div>
+              <!-- /.box-body -->
+
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+
+          </div>
+        </form>
+
+        <!-- /.box fin -->
+
+      </div>
+      <!--/.col (left) -->
+      <!-- right column -->
+      <div class="col-md-6">
+        <!-- Horizontal Form -->
+
+        <form role="form">
+          <div class="box box-success collapsed-box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Formulario de incidentes</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+              </div>
+            </div>
+            <!-- /.box-header -->
+
+              <div class="box-body">
+
+                <div class="form-group">
+                  <label>Fecha:</label>
+                  <div class="input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="text" class="form-control pull-right" id="ext3">
+                  </div>
+                  <!-- /.input group -->
+                </div>
+
+                <!-- checkbox -->
+                <div class="form-group">
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Fallas electricas
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Fallas en el motor
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Problemas en la caja
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Problemas en los globos
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Problemas en el compresor de aire
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Problemas en los ejes
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Problemas con la manguera de aire
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Problemas con el radiador
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Problemas en los muelles
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Plataforma con baches
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Problemas en el alternador
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Fallas en las crucetas
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Problemas en los frenos
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Problemas en la bomba
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Problemas en la corona
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Problemas en el turbo
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Problemas en los rodamientos
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Problemas con la correa
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Problemas en el tanque de combustible
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Problemas en los inyectores
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Problemas en el chasis
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                      Problemas de dirección
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Descripción:</label>
+                  <textarea class="form-control" rows="3" placeholder="Pequeña descripción de las infracciones ..." id="ext2"></textarea>
+                </div>
+
+              </div>
+              <!-- /.box-body -->
+
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+
+          </div>
+        </form>
+
+        <div class="box box-danger">
+          <div class="box-header with-border">
+            <h3 class="box-title">Donut Chart</h3>
+
+            <div class="box-tools pull-right">
+              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+              </button>
+              <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div>
+          </div>
+          <div class="box-body">
+            <div id="chartdiv"></div>
+          </div>
+          <!-- /.box-body -->
+        </div>
+
+        <!-- /.box -->
+      </div>
+
+
+      <!--/.col (right) -->
+    </div>
+    <!-- formularios estadisticos fin-->
     </section>
     <!-- /.content -->
   </div>
@@ -837,418 +1439,19 @@ desired effect
 <script src="bower_components/select2/dist/js/select2.full.min.js"></script>
 <script src="plugins/iCheck/icheck.min.js"></script>
 <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<!-- Resources -->
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN86jpZSdHSfpwhlKVv272WTd1lBMr6bc"></script>
 <script type="text/javascript" src="javascripts/jquery.googlemap.js"></script>
+<script type="text/javascript" src="data/veracruz.js"></script>
 
 <script>
-
-    var exinplusign=0;
-    var id='';
-    var placa='';
-    var daterangenvio="";
-    $(document).ready(function () {
-      console.log('<%=token%>');
-      inicializar();
-      limpiar();
-      $.get('/general',null,function(response){
-          $("#map").googleMap({
-            zoom: 8, // Initial zoom level (optional)
-            coords: [-19.578297, -65.758633], // Map center (optional)
-            type: "ROADMAP" // Map type (optional)
-          });
-
-          for(var i=0;i<response.length;i++){
-            let dato=response[i];
-            //ids.push(dato['_id']);
-            $('<li id="'+i+'tree">'
-                      +'<a href="#"><i id="'+i+'f1"></i><span>'+dato['placa']+'</span>'
-                      +'<span id="'+i+'spa">'
-                      +'<i id="'+i+'f2"></i>'
-                      +'</span>'
-                      +'</a>'
-                      +'<ul id="'+i+'tremen">'
-                      +'<li><a href="#" id="'+i+'hor"><i class="fa fa-circle-o"></i>Horarios de conducción</a></li>'
-                      +'<li><a href="#"><i class="fa fa-circle-o"></i>Kilometros recorridos</a></li>'
-                      +'<li><a href="#"><i class="fa fa-circle-o"></i>Desvios</a></li>'
-                      +'<li><a href="#"><i class="fa fa-circle-o"></i>Alcoholemia</a></li>'
-                      +'<li><a href="#"><i class="fa fa-circle-o"></i>Botiquín</a></li>'
-                      +'<li><a href="#" id="'+i+'ext"><i class="fa fa-circle-o"></i>Extintores</a></li>'
-                      +'<li><a href="#" id="'+i+'exc"><i class="fa fa-circle-o"></i>excesos de velocidad</a></li>'
-                      +'<li><a href="#" id="'+i+'cont"><i class="fa fa-circle-o"></i>Controlar estado del camion</a></li>'
-                      +'</ul>'
-                      +'</li>').appendTo('#incamion');
-            $('#'+i+'tree').addClass('treeview');
-            $('#'+i+'f1').addClass('fa fa-bus');
-            $('#'+i+'spa').addClass('pull-right-container');
-            $('#'+i+'f2').addClass('fa fa-angle-left pull-right');
-            $('#'+i+'tremen').addClass('treeview-menu');
-            //insertando punto en el mapa
-            if(dato['control']){
-              $("#map").addMarker({
-                coords: [parseFloat(dato['lat']),parseFloat(dato['lon'])], // GPS coords
-                //coords: [dato['lat'],dato['lon']],
-                //url: 'http://www.tiloweb.com', // Link to redirect onclick (optional)
-                //id: 'marker1', // Unique ID for your marker
-                title:dato['lugar'],
-                icon:'/fonts/icons/camion4.png',
-                text:'<b>Lorem ipsum</b> dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-              });
-            }
-            //poner a la escucha y hacer operaciones
-            //4232-ICI
-            $('#'+i+'exc').on('click', function(e){
-              e.preventDefault();
-              id=dato['id'];
-              placa=dato['placa']
-              $("#map").googleMap({
-                zoom: 8, // Initial zoom level (optional)
-                coords: [-19.578297, -65.758633], // Map center (optional)
-                type: "ROADMAP" // Map type (optional)
-              });
-              limpiar();
-              let postdata={
-                id:dato['id'],
-                i:exinplusign
-              };
-              $.post('/camion/exceso2',postdata,function(resp,status){
-                $('#excesosDiv').show();
-                $('#dateRange').show();
-                console.log(resp);
-                resp.forEach(function(dat){
-                  $('<tr>'
-                    +'<td>'+dato['placa']+'</td>'
-                    +'<td>'+dat['lugar']+'</td>'
-                    +'<td>'+dat['velocidad']+'</td>'
-                    +'<td>'+dat['fecha']+'</td>'
-                    +'<td>'+dat['hora']+'</td>'
-                    +'</tr>').appendTo('#contenidoExc');
-                  //añadiendo puntos de exceso
-                  $("#map").addMarker({
-                    //coords: [parseFloat(dat['lat']),parseFloat(dat['lon'])], // GPS coords
-                    coords: [parseFloat(dat['lat']),parseFloat(dat['lon'])],
-                      //url: 'http://www.tiloweb.com', // Link to redirect onclick (optional)
-                    title:dat['fecha'],
-                    icon:'/fonts/icons/alert.png',
-                    text:'<b>EVENTO</b> exceso de velocidad por el camion '+dato['id']+'a una altitud de '
-                  });
-                });//aqui hay cambios
-              },'json').fail(function(err){
-                console.log(err);
-              });
-            });
-            // horarios de conduccion
-            $('#'+i+'hor').on('click', function(e){
-              e.preventDefault();
-              id=dato['id'];
-              placa=dato['placa']
-              $("#map").googleMap({
-                zoom: 8, // Initial zoom level (optional)
-                coords: [-19.578297, -65.758633], // Map center (optional)
-                type: "ROADMAP" // Map type (optional)
-              });
-              limpiar();
-              let postdata={
-                id:dato['id'],
-                i:exinplusign
-              };
-              $.post('/camion/horario',postdata,function(resp,status){
-                $('#horarioDiv').show();
-                $('#dateRangeH').show();
-                console.log(resp);
-                resp.forEach(function(dat){
-                  $('<tr>'
-                    +'<td>'+dato['placa']+'</td>'
-                    +'<td>'+dat['lugar']+'</td>'
-                    +'<td>'+dat['fecha']+'</td>'
-                    +'<td>'+dat['hora']+'</td>'
-                    +'</tr>').appendTo('#contenidoHor');
-                  //añadiendo puntos de exceso
-                  $("#map").addMarker({
-                    //coords: [parseFloat(dat['lat']),parseFloat(dat['lon'])], // GPS coords
-                    coords: [parseFloat(dat['lat']),parseFloat(dat['lon'])],
-                      //url: 'http://www.tiloweb.com', // Link to redirect onclick (optional)
-                    title:dat['fecha'],
-                    icon:'/fonts/icons/alert.png',
-                    text:'<b>EVENTO</b> exceso de velocidad por el camion '+dato['id']+'a una altitud de '
-                  });
-                });//aqui hay cambios
-              },'json').fail(function(err){
-                console.log(err);
-              });
-            });
-            // horarios de conduccion final
-            // extintores
-
-            $('#'+i+'ext').on('click', function(e){
-              e.preventDefault();
-              id=dato['id'];
-              placa=dato['placa'];
-              limpiar();
-              $('#map').hide();
-              $('#formExtint').show();
-              let postdata={
-                id:dato['id'],
-                i:exinplusign
-              };
-              $.post('/camion/dataextintor',postdata,function(resp,status){
-                $('#tablaExt').show();
-                console.log(resp);
-                resp.forEach(function(dat){
-                  $('<tr>'
-                    +'<td>'+dat['lugar']+'</td>'
-                    +'<td>'+dat['observacion']+'</td>'
-                    +'<td>'+dat['fecha']+'</td>'
-                    +'<td>'+dat['check']+'</td>'
-                    +'<td>'+dat['aplica']+'</td>'
-                    +'</tr>').appendTo('#bodyExt');
-                });//aqui hay cambios
-              },'json').fail(function(err){
-                console.log(err);
-              });
-            });
-            // extintores final
-
-          }
-
-      });
-
-      //botones de excesos de Velocidad
-      $('#enviarDateRange').on('click',function(e){
-        e.preventDefault();
-        limpiar();
-        $('#masDatos').addClass('disabled');
-        var x=$('#reservation').val();
-        var x2=x.split(' - ');
-        let postdata={
-          id:id,
-          fi:x2[0],
-          ff:x2[1]
-        };
-        $.post('/camion/fechaE', postdata, function(response,status) {
-          $('#excesosDiv').show();
-          $('#dateRange').show();
-          try{
-            response.forEach(function(dat){
-              $('<tr>'
-                +'<td>'+placa+'</td>'
-                +'<td>'+dat['lugar']+'</td>'
-                +'<td>'+dat['velocidad']+'</td>'
-                +'<td>'+dat['fecha']+'</td>'
-                +'<td>'+dat['hora']+'</td>'
-                +'</tr>').appendTo('#contenidoExc');
-              //añadiendo puntos de exceso
-              $("#map").addMarker({
-                //coords: [parseFloat(dat['lat']),parseFloat(dat['lon'])], // GPS coords
-                coords: [parseFloat(dat['lat']),parseFloat(dat['lon'])],
-                  //url: 'http://www.tiloweb.com', // Link to redirect onclick (optional)
-                title:dat['fecha'],
-                icon:'/fonts/icons/alert.png',
-                text:'<b>EVENTO</b> exceso de velocidad por el camion '+placa+'a una altitud de '
-              });
-            });//aqui hay cambios
-          }catch(error){
-            console.log(response);
-          }
-
-        },'json').fail(function(err){
-          console.log(err);
-        });
-      });
-
-      $('#masDatos').on('click',function(e){
-        e.preventDefault();
-        exinplusign++;
-        let postdata={
-          id:id,
-          i:exinplusign
-        };
-        $.post('/camion/exceso2',postdata,function(resp,status){
-          console.log(resp);
-          resp.forEach(function(dat){
-            $('<tr>'
-              +'<td>'+placa+'</td>'
-              +'<td>'+dat['lugar']+'</td>'
-              +'<td>'+dat['velocidad']+'</td>'
-              +'<td>'+dat['fecha']+'</td>'
-              +'<td>'+dat['hora']+'</td>'
-              +'</tr>').appendTo('#contenidoExc');
-            //añadiendo puntos de exceso
-            $("#map").addMarker({
-              //coords: [parseFloat(dat['lat']),parseFloat(dat['lon'])], // GPS coords
-              coords: [parseFloat(dat['lat']),parseFloat(dat['lon'])],
-                //url: 'http://www.tiloweb.com', // Link to redirect onclick (optional)
-              title:dat['fecha'],
-              icon:'/fonts/icons/alert.png',
-              text:'<b>EVENTO</b> exceso de velocidad por el camion '+placa+'a una altitud de '
-            });
-          });//aqui hay cambios
-        },'json').fail(function(err){
-          console.log(err);
-        });
-      });
-      //botones exceso de velocidad fin
-
-      //botones horarios
-
-      $('#enviarDateRangeH').on('click',function(e){
-        e.preventDefault();
-        limpiar();
-        $('#masDatosH').addClass('disabled');
-        var x=$('#reservationH').val();
-        var x2=x.split(' - ');
-        let postdata={
-          id:id,
-          fi:x2[0],
-          ff:x2[1]
-        };
-        $.post('/camion/fechaH', postdata, function(response,status) {
-          $('#horarioDiv').show();
-          $('#dateRangeH').show();
-          try{
-            response.forEach(function(dat){
-              $('<tr>'
-                +'<td>'+placa+'</td>'
-                +'<td>'+dat['lugar']+'</td>'
-                +'<td>'+dat['fecha']+'</td>'
-                +'<td>'+dat['hora']+'</td>'
-                +'</tr>').appendTo('#contenidoHor');
-              //añadiendo puntos de exceso
-              $("#map").addMarker({
-                //coords: [parseFloat(dat['lat']),parseFloat(dat['lon'])], // GPS coords
-                coords: [parseFloat(dat['lat']),parseFloat(dat['lon'])],
-                  //url: 'http://www.tiloweb.com', // Link to redirect onclick (optional)
-                title:dat['fecha'],
-                icon:'/fonts/icons/alert.png',
-                text:'<b>EVENTO</b> exceso de velocidad por el camion '+placa+'a una altitud de '
-              });
-            });//aqui hay cambios
-          }catch(error){
-            console.log(response);
-          }
-
-        },'json').fail(function(err){
-          console.log(err);
-        });
-      });
-
-      $('#masDatosH').on('click',function(e){
-        e.preventDefault();
-        exinplusign++;
-        let postdata={
-          id:id,
-          i:exinplusign
-        };
-        $.post('/camion/horario',postdata,function(resp,status){
-          console.log(resp);
-          resp.forEach(function(dat){
-            $('<tr>'
-              +'<td>'+placa+'</td>'
-              +'<td>'+dat['lugar']+'</td>'
-              +'<td>'+dat['fecha']+'</td>'
-              +'<td>'+dat['hora']+'</td>'
-              +'</tr>').appendTo('#contenidoHor');
-            //añadiendo puntos de exceso
-            $("#map").addMarker({
-              //coords: [parseFloat(dat['lat']),parseFloat(dat['lon'])], // GPS coords
-              coords: [parseFloat(dat['lat']),parseFloat(dat['lon'])],
-                //url: 'http://www.tiloweb.com', // Link to redirect onclick (optional)
-              title:dat['fecha'],
-              icon:'/fonts/icons/alert.png',
-              text:'<b>EVENTO</b> exceso de velocidad por el camion '+placa+'a una altitud de '
-            });
-          });//aqui hay cambios
-        },'json').fail(function(err){
-          console.log(err);
-        });
-      });
-      //botones horarios final
-
-      ////botones extintores
-      $('#formExtint').submit(function(e) {
-        e.preventDefault();
-        var erm=[];
-        for (var ii = 1; ii <=4; ii++) {
-          erm.push($('#ext'+ii).val());
-        }
-        for (var ii = 1; ii <= 12; ii++) {
-          erm.push($('input:radio[name=r'+ii+']:checked','#formExtint').val());
-        }
-        $.post('/camion/extintor',{data:erm+'',id:id},function(resp,status){
-          console.log(resp);
-
-        },'json').fail(function(err){
-          console.log(err);
-        });
-        $(this).trigger("reset");
-      });
-
-      ////botones extintores final
-    });
-
-    function limpiar(){
-      exinplusign=0;
-      $("#map").show();
-      $('#tablaExt').hide();
-      $('#formExtint').hide();
-      $('#dateRange').hide();
-      $('#dateRangeH').hide();
-      $('#excesosDiv').hide();
-      $('#horarioDiv').hide();
-      $('#masDatos').removeClass('disabled');
-      $('#masDatosH').removeClass('disabled');
-      $('#contenidoExc').empty();
-      $('#contenidoHor').empty();
-      $('#bodyExt').empty();
-    }
-    function inicializar(){
-      //Date picker
-      $('#ext3').datepicker({
-        autoclose: true
-      });
-      //iCheck for checkbox and radio inputs
-      $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-        checkboxClass: 'icheckbox_minimal-blue',
-        radioClass   : 'iradio_minimal-blue'
-      });
-      //Red color scheme for iCheck
-      $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
-        checkboxClass: 'icheckbox_minimal-red',
-        radioClass   : 'iradio_minimal-red'
-      });
-      //Flat red color scheme for iCheck
-      $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
-        checkboxClass: 'icheckbox_flat-green',
-        radioClass   : 'iradio_flat-green'
-      });
-      $('.select2').select2();
-      $('#reservation').daterangepicker();
-      $('#reservationH').daterangepicker();
-      $('#example3').DataTable({
-        'paging'      : true,
-        'lengthChange': false,
-        'searching'   : false,
-        'ordering'    : true,
-        'info'        : true,
-        'autoWidth'   : false,
-      });
-      $('#example2').DataTable({
-        'paging'      : true,
-        'lengthChange': false,
-        'searching'   : false,
-        'ordering'    : true,
-        'info'        : true,
-        'autoWidth'   : false
-      });
-      $('#example').DataTable({
-        'paging'      : true,
-        'lengthChange': false,
-        'searching'   : false,
-        'ordering'    : true,
-        'info'        : true,
-        'autoWidth'   : false
-      });
-    }
+  console.log('<%=token>');
 </script>
+
 </body>
 </html>
